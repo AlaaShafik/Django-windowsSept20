@@ -1,0 +1,16 @@
+{% extends 'music/base.html' %}
+
+{% block body %}
+
+<h3>Hi There, this is basic testing website!</h3>
+    <ul>
+        {% for album in album_list %}
+        <li><a href="{% url 'music:detail' album.id %}">{{album.album_title}}</a> </li>
+{% endfor %}
+  <a href="https://www.djangoproject.com/">Django Website</a><br>
+    <a href="https://www.youtube.com/watch?v=oczgHbMZO-8&index=6&list=PLMYF6NkLrdN9JJ7r0APq7O87gucjYWRfD/">Django Tut - Arabic</a><br>
+    <a href="https://www.inc.com/">Inc Corporation :)</a>
+
+{% endblock %}
+
+
