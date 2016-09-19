@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title> {{album.album_title}} </title>
+      </head>
+{% if albums_list %}
+<h3>Hi There, this is basic testing website!</h3>
+    <ul>
+        {% for album in albums_list %}
+        <li><a href="{% url 'music:detail' album.id %}">{{album.album_title}}</a> </li>
+    {% endfor %}
+    </ul>
+    <a href="https://www.djangoproject.com/">Django Website</a><br>
+    <a href="https://www.youtube.com/watch?v=oczgHbMZO-8&index=6&list=PLMYF6NkLrdN9JJ7r0APq7O87gucjYWRfD/">Django Tut - Arabic</a><br>
+    <a href="https://www.inc.com/">Inc Corporation :)</a>
+
+{% else %}
+        <h3>You don't have any albums</h3>
+{% endif %}
