@@ -3,14 +3,63 @@
 {% block body %}
 
 <h3>Hi There, this is basic testing website!</h3>
-    <ul>
-        {% for album in album_list %}
-        <li><a href="{% url 'music:detail' album.id %}">{{album.album_title}}</a> </li>
-{% endfor %}
-  <a href="https://www.djangoproject.com/">Django Website</a><br>
-    <a href="https://www.youtube.com/watch?v=oczgHbMZO-8&index=6&list=PLMYF6NkLrdN9JJ7r0APq7O87gucjYWRfD/">Django Tut - Arabic</a><br>
-    <a href="https://www.inc.com/">Inc Corporation :)</a>
 
+        {% for album in album_list %}
+
+ <!-- Album -->
+        <div class="col-sm-4 col-lg-2">
+                    <div class="thumbnail">
+                        <a href="{% url 'music:detail' album.id %}">
+                            <img src="{{ album.album_logo.url }}" class="img-responsive">
+                        </a>
+                        <div class="caption">
+                            <h2>{{ album.album_title }}</h2>
+                            <h4>{{ album.artist }}</h4>
+
+        <!-- View Details -->
+            <a href="{% url 'music:detail' album.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+        <!-- Delete Album -->
+        <form action="{% url 'music:album-delete' album.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="album_id" value="{{ album.id }}" />
+            <button type="submit" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-trash"></span>
+            </button>
+        </form>
+
+        <!--album update-->
+        <form action="{% url 'music:album-update' album.id %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <input type="hidden" name="album_id" value="{{ album.id }}" />
+            <button type="submit" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </button>
+        </form><br>
+
+                        </div>
+                    </div>
+                </div>
+{% endfor %}
+
+ <br>
+<br>
+ <br>
+<br> <br>
+<br> <br>
+<br>
+<br> </br>
+<br> </br>
+<br> </br>
+<br><br>
+
+<h3>
+<ul>
+ <li> <a href="https://www.djangoproject.com/">Django Website</a><br></li>
+    <li><a href="https://www.youtube.com/watch?v=oczgHbMZO-8&index=6&list=PLMYF6NkLrdN9JJ7r0APq7O87gucjYWRfD/">Django Tut - Arabic</a><br></li>
+    <li><a href="https://www.inc.com/">Inc Corporation :)</a></li>
+</ul>
+    </h3>
 {% endblock %}
 
 
